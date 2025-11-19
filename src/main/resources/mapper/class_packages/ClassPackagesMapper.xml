@@ -4,5 +4,27 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogfeetbirdfeet.ivorypilatesbackend.mapper.class_packages.ClassPackgesMapper">
-
+    <select id="getClassPackages" resultType="com.dogfeetbirdfeet.ivorypilatesbackend.dto.schema.ClsPkg">
+        SELECT
+            A.CLS_PKG_ID,
+            A.CLS_PKG_NM,
+            A.CLS_TYPE,
+            A.USE_YN,
+            A.CLS_PKG_CNT,
+            A.PRICE,
+            A.DISCOUNT_AMT,
+            A.INST_YN,
+            A.EXP_RATE,
+            A.REMARK,
+            A.REG_DTM,
+            A.MOD_DTM
+        FROM cls_pkg A
+        WHERE 1=1
+        <if test="clsPkgNm!=null and clsPkgNm!=''">
+            AND A.CLS_PKG_NM = #{clsPkgNm}
+        </if>
+        <if test="useYn!=null and useYn!=''">
+            AND A.USE_YN = #{useYn}
+        </if>
+    </select>
 </mapper>
