@@ -55,10 +55,10 @@ public class AcctController {
 	 * @param acct 생성 계정 정보
 	 * @param userId 생성하는 계정 아이디
 	 * @return 생성된 계정 정보
-	 */
-	@PostMapping()
-	public ResponseEntity<ApiResponse<Acct>> insertAcct(@RequestBody Acct acct,
-		@RequestParam String userId) {
-		return commonMethod.responseTransaction(acctService.insertAcct(acct, userId));
+                */
+        @PostMapping()
+        public ResponseEntity<ApiResponse<Acct>> insertAcct(@RequestBody Acct acct,
+                @RequestParam String userId) {
+            return commonMethod.responseTransaction(acctService.insertAcct(acct, userId));
 	}
 }

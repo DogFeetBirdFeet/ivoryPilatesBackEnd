@@ -27,4 +27,68 @@
             AND A.USE_YN = #{useYn}
         </if>
     </select>
+
+    <select id="getClassPackageDetail" resultType="com.dogfeetbirdfeet.ivorypilatesbackend.dto.schema.ClsPkg">
+        SELECT
+            A.CLS_PKG_ID,
+            A.CLS_PKG_NM,
+            A.CLS_TYPE,
+            A.CLS_PKG_CNT,
+            A.PRICE,
+            A.DISCOUNT_AMT,
+            A.INST_YN,
+            A.INST_MM,
+            A.USE_YN,
+            A.EXP_RATE,
+            A.REMARK,
+            A.REG_DTM,
+            A.REG_ID,
+            A.MOD_DTM,
+            A.MOD_ID
+        FROM CLS_PKG A
+        WHERE 1=1
+          AND A.CLS_PKG_ID = #{clsPkgId}
+    </select>
+
+    <insert id="insertClsPkg">
+        INSERT
+        INTO CLS_PKG
+        ( CLS_PKG_NM
+        , CLS_TYPE
+        , CLS_PKG_CNT
+        , PRICE
+        , DISCOUNT_AMT
+        , INST_YN
+        , INST_MM
+        , USE_YN
+        , EXP_RATE
+        , REMARK
+        , REG_DTM
+        , REG_ID
+        , MOD_DTM
+        , MOD_ID)
+        VALUES ( #{clsPkg.clsPkgNm}
+        , #{clsPkg.clsType}
+        , #{clsPkg.clsPkgCnt}
+        , #{clsPkg.price}
+        , #{clsPkg.discountAmt}
+        , #{clsPkg.instYn}
+        , #{clsPkg.instMm}
+        , #{clsPkg.useYn}
+        , #{clsPkg.expRate}
+        , #{clsPkg.remark}
+        , DATE_FORMAT(NOW(), '%Y%m%d')
+        , #{userId}
+        , DATE_FORMAT(NOW(), '%Y%m%d')
+        , #{userId})
+    </insert>
+    
+    <update id="updateClsPkg">
+        UPDATE CLS_PKG
+        SET USE_YN  = #{clsPkg.useYn}
+          , REMARK  = #{clsPkg.remark}
+          , MOD_DTM = DATE_FORMAT(NOW(), '%Y%m%d')
+          , MOD_ID  = #{userId})
+        WHERE CLS_PKG_ID = #{clsPkg.clsPkgID}
+    </update>
 </mapper>
