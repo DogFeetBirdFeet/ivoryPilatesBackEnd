@@ -1,5 +1,6 @@
 package com.dogfeetbirdfeet.ivorypilatesbackend.dto.schema;
 
+import com.dogfeetbirdfeet.ivorypilatesbackend.dto.enums.ClsType;
 import com.dogfeetbirdfeet.ivorypilatesbackend.dto.enums.YN;
 
 import lombok.Data;
@@ -13,6 +14,7 @@ public class ClsPkg {
 
 	private Long clsPkgId;
 	private String clsPkgNm;
+    private ClsType clsType;
 	private Integer clsPkgCnt;
 	private Integer price;
 	private Integer discountAmt;

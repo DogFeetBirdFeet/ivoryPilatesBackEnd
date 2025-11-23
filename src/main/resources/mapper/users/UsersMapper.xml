@@ -23,13 +23,13 @@
         JOIN CUS_REG B
         ON A.MST_ID = B.MST_ID
         WHERE 1=1;
-        <if test="FLAG!=NULL">
+        <if test="flag!=null and flag!=''">
             AND B.REST_YN = 'N'
         </if>
-        <if test="NAME!=NULL">
+        <if test="name!=null and name!=''">
             AND A.NAME = #{name}
         </if>
-        <if test="CONTACT!=NULL">
+        <if test="contact!=null and contact!=''">
             AND A.CONTACT = #{contact}
         </if>
     </select>

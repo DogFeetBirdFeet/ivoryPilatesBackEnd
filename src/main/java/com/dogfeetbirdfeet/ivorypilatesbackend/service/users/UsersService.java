@@ -2,6 +2,7 @@ package com.dogfeetbirdfeet.ivorypilatesbackend.service.users;
 
 import com.dogfeetbirdfeet.ivorypilatesbackend.dto.searchdto.CusSearchDto;
 import com.dogfeetbirdfeet.ivorypilatesbackend.mapper.users.UsersMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class UsersService {
      * @param name 고객명 contact 연락처
      * @return 계정 정보
      */
-    public List<CusSearchDto> getCusSearch(String name, String contact, String flag) {
+    public List<CusSearchDto> getCusSearch(@Param("name") String name, @Param("contact") String contact, @Param("flag") String flag) {
 
         return usersMapper.getCusSearch(name, contact, flag);
     }
